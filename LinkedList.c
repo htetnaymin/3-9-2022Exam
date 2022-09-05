@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include "conio.h"
 void print();
+void firstthingtodo();
 void insertAfter();
 void insertTop();
 void insertBottom();
@@ -23,7 +24,7 @@ int index1=0;
 struct Node
 {
     int data;
-    int age;
+//    int age;
     struct Node* next;
 };
 int main()
@@ -31,28 +32,30 @@ int main()
     printf("Welcome to my linkedlist.\n");
     int index=0;
     struct Node* first=NULL;
-    struct Node* second=NULL;
-    struct Node* third=NULL;
+//    struct Node* second=NULL;
+//    struct Node* third=NULL;
     first=(struct Node*)malloc(sizeof (struct Node));
-    second=(struct Node*)malloc(sizeof(struct Node));
-    third=(struct Node*) malloc(sizeof (struct Node));
+//    second=(struct Node*)malloc(sizeof(struct Node));
+//    third=(struct Node*) malloc(sizeof (struct Node));
 
-    first->data=10;
-    first->age=1000;
-    first->next=second;
+    first->data=0;
+    first->next=NULL;
+//    first->age=1000;
+//    first->next=second;
 
-    second->data=20;
-    second->age=2000;
-    second->next=third;
+//    second->data=20;
+//    second->age=2000;
+//    second->next=third;
+//
+//    third->data=30;
+//    third->age=30000;
+//    third->next=NULL;
 
-    third->data=30;
-    third->age=30000;
-    third->next=NULL;
-
-    insertAfter(first,15);
-    insertTop(&first,5);
-    insertBottom(first,35);
-    print(first);
+//    insertAfter(first,15);
+//    insertTop(&first,5);
+//    insertBottom(first,35);
+    firstthingtodo(first);
+//    print(first);
     opt(&first);
 //    printf("Enter index to edit : ");
 //    scanf("%d",&index);
@@ -75,6 +78,27 @@ void print(struct Node* first_node)
         first_node=first_node->next;
     }
     printf("NULL\n");
+}
+void firstthingtodo(struct Node* first_node)
+{
+    struct Node* temp=(struct Node*)malloc(sizeof (struct Node));
+    temp=first_node;
+    int num=0;
+    int data=0;
+    printf("How many linked list do you want to create : ");
+    scanf("%d",&num);
+    printf("Ente data 0: ");
+    scanf("%d",&data);
+    first_node->data=data;
+    print(temp);
+    for (int i = 1; i < num; ++i)
+    {
+        printf("Enter data %d: ",i);
+        scanf("%d",&data);
+        insertAfter(first_node,data);
+        first_node=first_node->next;
+        print(temp);
+    }
 }
 void insertAfter(struct Node* prev_node,int data)
 {
